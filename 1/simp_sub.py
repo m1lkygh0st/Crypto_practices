@@ -3,7 +3,7 @@
 import string
 
 
-def simp_sub_enc(inp_str, letters2):
+def simp_sub_enc(inp_str: str = "", letters2=None) -> str:
     """This function makes encryption of the simple substitution cipher"""
     letters = list(string.ascii_uppercase)
     num = [int(i) for i in range(26)]
@@ -18,7 +18,7 @@ def simp_sub_enc(inp_str, letters2):
     return new_str
 
 
-def simp_sub_dec(inp_str, letters2):
+def simp_sub_dec(inp_str: str = "", letters2=None) -> str:
     """This function makes decryption of the simple substitution cipher"""
     letters = list(string.ascii_uppercase)
     num = [int(i) for i in range(26)]
