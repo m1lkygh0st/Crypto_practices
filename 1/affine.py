@@ -1,19 +1,8 @@
 """File: affine.py"""
 
-import string
+import affine_common_data as acd
 
-letters = list(string.ascii_uppercase)
-num = [int(i) for i in range(26)]
-alp = dict(zip(letters, num))
-alp_ = dict(zip(num, letters))
-
-
-def find_x(k1: int = 0) -> int | None:
-    """This function finds the unknown number"""
-    for i in range(1, 27):
-        if (k1 * i) % 26 == 1:
-            return i
-    return None
+letters, num, alp, alp_ = acd.set_val()
 
 
 def affine_enc(st: str = "", k1: int = 0, k2: int = 0) -> str:
@@ -28,5 +17,5 @@ def affine_dec(st: str = "", k1: int = 0, k2: int = 0) -> str:
     """This function makes decryption of the affine cipher"""
     dec_st = ""
     for i in range(len(st)):
-        dec_st += alp_[(find_x(k1) * (alp[st[i]] - k2)) % 26]
+        dec_st += alp_[(acd.find_x(k1) * (alp[st[i]] - k2)) % 26]
     return dec_st
