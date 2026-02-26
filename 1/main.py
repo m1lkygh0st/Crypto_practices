@@ -2,7 +2,7 @@
 
 import manage
 
-command = input("Hello! Choose a command:\n| to use ciphers - 1 | for cryptoanalysis - 2 |\n")
+command = input("Hello! Choose a command:\n| to use ciphers - 1 | for cryptanalysis - 2 |\n")
 if command == "1":
     start = input("Choose a command:\n| simp_sub - 1 | affine - 2 | affine_recur - 3 |\n")
     if start == "1":
@@ -15,7 +15,13 @@ if command == "1":
         print("Unknown command")
 
 elif command == "2":
-    print("This section is currently under development")
+    cmd = input("Choose a command for decode:\n| simp_sub - 1 | affine - 2 | affine_recur - 3 |\n")
+    if cmd == "2":
+        manage.decode_affine_manage()
+    elif cmd == "1" or cmd == "3":
+        print("This section is currently under development")
+    else:
+        print("Unknown command")
 
 else:
     print("Unknown command")

@@ -3,6 +3,7 @@
 import simp_sub
 import affine
 import affine_recur
+import decode_affine
 
 
 def simp_sub_manage():
@@ -49,3 +50,9 @@ def affine_recur_manage():
         print(affine_recur.affine_recurs_dec(st, a, b))
     else:
         print("Unknown command")
+
+
+def decode_affine_manage():
+    """This function is used to manage the decoding of affine cipher"""
+    cmd = input("Input the ciphertext:\n")
+    print(decode_affine.decode_affine(cmd))
