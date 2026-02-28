@@ -9,11 +9,18 @@ import decode_affine
 def simp_sub_manage():
     """This function is used to manage the simp_sub command"""
     cmd = input("Choose a command:\n| encode - 1 | decode - 2 |\n")
-    st, letters2 = input("input two strings with the space: ").split()
+    st = input("input string: ")
+    alphabet = input("input alphabet: ")
     if cmd == "1":
-        print(simp_sub.simp_sub_enc(st, letters2))
+        try:
+            print(simp_sub.simp_sub_enc(st, alphabet))
+        except KeyError as e:
+            print(f"KeyError: {e}")
     elif cmd == "2":
-        print(simp_sub.simp_sub_dec(st, letters2))
+        try:
+            print(simp_sub.simp_sub_dec(st, alphabet))
+        except KeyError as e:
+            print(f"KeyError: {e}")
     else:
         print("Unknown command")
 
@@ -24,9 +31,15 @@ def affine_manage():
     st = input("input string: ")
     a, b = map(int, input("input two digits with the space: ").split())
     if cmd == "1":
-        print(affine.affine_enc(st, a, b))
+        try:
+            print(affine.affine_enc(st, a, b))
+        except KeyError as e:
+            print(f"KeyError: {e}")
     elif cmd == "2":
-        print(affine.affine_dec(st, a, b))
+        try:
+            print(affine.affine_dec(st, a, b))
+        except KeyError as e:
+            print(f"KeyError: {e}")
     else:
         print("Unknown command")
 
@@ -45,9 +58,15 @@ def affine_recur_manage():
         i += 1
 
     if cmd == "1":
-        print(affine_recur.affine_recurs_enc(st, a, b))
+        try:
+            print(affine_recur.affine_recurs_enc(st, a, b))
+        except KeyError as e:
+            print(f"KeyError: {e}")
     elif cmd == "2":
-        print(affine_recur.affine_recurs_dec(st, a, b))
+        try:
+            print(affine_recur.affine_recurs_dec(st, a, b))
+        except KeyError as e:
+            print(f"KeyError: {e}")
     else:
         print("Unknown command")
 
@@ -55,4 +74,7 @@ def affine_recur_manage():
 def decode_affine_manage():
     """This function is used to manage the decoding of affine cipher"""
     cmd = input("Input the ciphertext:\n")
-    print(decode_affine.decode_affine(cmd))
+    try:
+        print(decode_affine.decode_affine(cmd))
+    except KeyError as e:
+        print(f"KeyError: {e}")

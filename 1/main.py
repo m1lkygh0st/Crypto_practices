@@ -18,7 +18,7 @@ elif command == "2":
     cmd = input("Choose a command for decode:\n| simp_sub - 1 | affine - 2 | affine_recur - 3 |\n")
     if cmd == "2":
         manage.decode_affine_manage()
-    elif cmd == "1" or cmd == "3":
+    elif cmd in {"1", "3"}:
         print("This section is currently under development")
     else:
         print("Unknown command")

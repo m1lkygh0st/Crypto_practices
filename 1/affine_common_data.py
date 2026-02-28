@@ -5,11 +5,9 @@ import string
 
 def set_val():
     """This function sets values to variables"""
-    letters = list(string.ascii_uppercase)
-    num = [int(i) for i in range(26)]
-    alp = dict(zip(letters, num))
-    alp_ = dict(zip(num, letters))
-    return letters, num, alp, alp_
+    alp = dict(zip(string.ascii_uppercase, range(26)))
+    alp_ = dict(zip(range(26), string.ascii_uppercase))
+    return alp, alp_
 
 
 def find_x(k1: int = 0) -> int | None:

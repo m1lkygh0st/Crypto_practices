@@ -2,31 +2,35 @@
 
 import string
 
+from key_error import key_error_str, key_error_alp
 
-def simp_sub_enc(inp_str: str = "", letters2=None) -> str:
+
+def simp_sub_enc(inp_str: str = "", inp_alp: str = "") -> str:
     """This function makes encryption of the simple substitution cipher"""
-    letters = list(string.ascii_uppercase)
-    num = [int(i) for i in range(26)]
-    alp = dict(zip(letters, num))
-    alp2_ = dict(zip(num, letters2))
+    key_error_str(inp_str)
+    key_error_alp(inp_alp)
+
+    alp = dict(zip(string.ascii_uppercase, range(26)))
+    alp_ = dict(zip(range(26), inp_alp))
     digits = []
     for i in inp_str:
         digits.append(alp[i])
     new_str = ""
     for i in digits:
-        new_str += alp2_[i]
+        new_str += alp_[i]
     return new_str
 
 
-def simp_sub_dec(inp_str: str = "", letters2=None) -> str:
+def simp_sub_dec(inp_str: str = "", inp_alp: str = "") -> str:
     """This function makes decryption of the simple substitution cipher"""
-    letters = list(string.ascii_uppercase)
-    num = [int(i) for i in range(26)]
-    alp_ = dict(zip(num, letters))
-    alp2 = dict(zip(letters2, num))
+    key_error_str(inp_str)
+    key_error_alp(inp_alp)
+
+    alp = dict(zip(inp_alp, range(26)))
+    alp_ = dict(zip(range(26), string.ascii_uppercase))
     digits = []
     for i in inp_str:
-        digits.append(alp2[i])
+        digits.append(alp[i])
     new_str = ""
     for i in digits:
         new_str += alp_[i]

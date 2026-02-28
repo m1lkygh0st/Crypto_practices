@@ -6,6 +6,12 @@ import string
 
 def decode_affine(input_ciphertext: str = "") -> str:
     """This function decodes affine cipher"""
+    for char in input_ciphertext:
+        if char.isdecimal():
+            raise KeyError("Numbers not allowed in ciphertext")
+        if not char.isalpha() and not char.isspace():
+            raise KeyError("Unknown symbol not allowed in ciphertext")
+
     m = 26
 
     alp = dict(zip(string.ascii_uppercase, range(26)))
