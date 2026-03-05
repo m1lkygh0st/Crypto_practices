@@ -12,12 +12,9 @@ def simp_sub_enc(inp_str: str = "", inp_alp: str = "") -> str:
 
     alp = dict(zip(string.ascii_uppercase, range(26)))
     alp_ = dict(zip(range(26), inp_alp))
-    digits = []
-    for i in inp_str:
-        digits.append(alp[i])
     new_str = ""
-    for i in digits:
-        new_str += alp_[i]
+    for i in inp_str:
+        new_str += alp_[alp[i]]
     return new_str
 
 
@@ -28,10 +25,7 @@ def simp_sub_dec(inp_str: str = "", inp_alp: str = "") -> str:
 
     alp = dict(zip(inp_alp, range(26)))
     alp_ = dict(zip(range(26), string.ascii_uppercase))
-    digits = []
-    for i in inp_str:
-        digits.append(alp[i])
     new_str = ""
-    for i in digits:
-        new_str += alp_[i]
+    for i in inp_str:
+        new_str += alp_[alp[i]]
     return new_str
