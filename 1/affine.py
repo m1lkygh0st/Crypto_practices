@@ -1,35 +1,40 @@
 """File: affine.py"""
 
 import string
-
 import affine_common_data as acd
-from key_error import key_error_str
-
-alp, alp_, alp2, alp2_ = acd.set_val()
+import key_error
 
 
 def affine_enc(inp_str: str = "", k1: int = 0, k2: int = 0) -> str:
-    """This function makes encryption of the affine cipher"""
-    key_error_str(inp_str)
+    """Encryption with affine cipher"""
 
-    enc_st = ""
+    key_error.key_error_str(inp_str)
+    return "".join(
+        string.ascii_uppercase[(k1 * (ord(i) - ord("A")) + k2) % 26]
+        if i.isupper()
+        else string.ascii_lowercase[(k1 * (ord(i) - ord("a")) + k2) % 26]
+        if i.isalpha()
+        else i
+        for i in inp_str
+    )
 
-    for i in inp_str:
-        if i in string.ascii_uppercase:
-            enc_st += alp_[(k1 * alp[i] + k2) % 26]
-        else:
-            enc_st += alp2_[(k1 * alp2[i] + k2) % 26]
-    return enc_st
 
+def affine_dec(inp_str: str, k1: int, k2: int) -> str:
+    """Decryption with affine cipher"""
 
-def affine_dec(inp_str: str = "", k1: int = 0, k2: int = 0) -> str:
-    """This function makes decryption of the affine cipher"""
-    key_error_str(inp_str)
+    key_error.key_error_str(inp_str)
+    x = acd.find_x(k1)
 
-    dec_st = ""
-    for i in inp_str:
-        if i in string.ascii_uppercase:
-            dec_st += alp_[(acd.find_x(k1) * (alp[i] - k2)) % 26]
-        else:
-            dec_st += alp2_[(acd.find_x(k1) * (alp2[i] - k2)) % 26]
-    return dec_st
+    def dec_char(char: str, k1_inv: int, k2_inv: int, num: int) -> str:
+        """Decryption of the single character with affine cipher"""
+        idx = ord(char) - num
+        return chr(((k1_inv * (idx - k2_inv)) % 26) + num)
+
+    return "".join(
+        dec_char(i, x, k2, ord("A"))
+        if i.isupper()
+        else dec_char(i, x, k2, ord("a"))
+        if i.islower()
+        else i
+        for i in inp_str
+    )

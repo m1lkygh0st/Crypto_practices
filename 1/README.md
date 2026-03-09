@@ -7,7 +7,7 @@
 ## How to use
 
 - Choose needed type of cipher
-- Input letters/words (for simp_sub cipher input uppercase letters)
+- Input the words
 - Check the result
 
 ## How to fix mistakes

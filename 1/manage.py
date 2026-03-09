@@ -11,6 +11,8 @@ def simp_sub_manage():
     cmd = input("Choose a command:\n| encode - 1 | decode - 2 |\n")
     st = input("input string: ")
     alphabet = input("input alphabet: ")
+    if len(alphabet) != 26:
+        raise ValueError("Alphabet must contain 26 characters")
     if cmd == "1":
         try:
             print(simp_sub.simp_sub_enc(st, alphabet))
@@ -50,12 +52,6 @@ def affine_recur_manage():
     st = input("input string: ")
     a = list(map(int, input("input two digits with the space: ").split()))
     b = list(map(int, input("input two digits with the space: ").split()))
-
-    while len(st) > len(a):
-        i = len(a)
-        a.append((a[i - 1] * a[i - 2]) % 26)
-        b.append((b[i - 1] + b[i - 2]) % 26)
-        i += 1
 
     if cmd == "1":
         try:
