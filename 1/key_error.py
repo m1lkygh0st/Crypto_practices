@@ -6,5 +6,3 @@ def key_error_str(inp_str: str = ""):
     for char in inp_str:
         if char.isdecimal():
             raise KeyError("Numbers not allowed in string")
-        if not char.isalpha():
-            raise KeyError("Unknown symbol not allowed in string")

@@ -4,6 +4,7 @@ import simp_sub
 import affine
 import affine_recur
 import decode_affine
+import decode_affine_recur
 
 
 def simp_sub_manage():
@@ -72,5 +73,14 @@ def decode_affine_manage():
     cmd = input("Input the ciphertext:\n")
     try:
         print(decode_affine.decode_affine(cmd))
+    except KeyError as e:
+        print(f"KeyError: {e}")
+
+
+def decode_affine_recur_manage():
+    """This function is used to manage the decoding of affine recur cipher"""
+    cmd = input("Input the ciphertext:\n")
+    try:
+        print(decode_affine_recur.decode_affine_recur(cmd))
     except KeyError as e:
         print(f"KeyError: {e}")
